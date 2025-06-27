@@ -11,7 +11,7 @@ html, body {
 
 body {
     min-height: 100vh;
-    background: linear-gradient(to bottom, rgb(47, 49, 67), rgb(17, 17, 28));
+    background: linear-gradient(to bottom, rgb(68, 70, 96), rgb(9, 9, 14));
     margin: 0;
     width: 100%;
     display: block;
@@ -20,6 +20,14 @@ body {
 .wrapper {
   padding: 1em;
 }
+
+video {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
 
 /**
 * Button Styles
@@ -65,15 +73,15 @@ body {
   padding: 1em;
   transition: opacity 1s;
   text-align: center;
+  align-content: center;
 }
 .page *{
-
   color: #1dced7c6;
   background: inherit;
-  mix-blend-mode: lighten; /* or screen, depending on your goals */
   font-family: losevka;
 }
 
 .page > p{
     font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    mix-blend-mode: screen;
 }
