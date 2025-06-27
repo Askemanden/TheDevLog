@@ -1,6 +1,14 @@
 /**
 * GLOBAL STYLE
 */
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden; /* stops horizontal overscroll */
+  overscroll-behavior: none; /* disables scroll past boundaries */
+}
+
+
 body {
     min-height: 100vh;
     background: linear-gradient(to bottom, rgb(47, 49, 67), rgb(17, 17, 28));
