@@ -1,0 +1,70 @@
+/**
+* GLOBAL STYLE
+*/
+body {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, rgb(47, 49, 67), rgb(17, 17, 28));
+    margin: 0;
+    width: 100%;
+    display: block;
+}
+
+.wrapper {
+  padding: 1em;
+}
+
+/**
+* Button Styles
+*/
+.menubutton {
+  margin: 2px;
+  background: radial-gradient(circle at center, #2B3E50, #111F2B);
+  color: #AFCBFF;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(125, 249, 240, 0.267);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.menubutton:hover {
+  background: radial-gradient(circle at center, #3B5369, #11121A);
+  transform: scale(1.04);
+}
+
+#navigator {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+#entries {
+  position: absolute;
+  top: 100%;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  max-height: 0;
+  background-color: transparent;
+}
+
+/**
+* Log entry styles
+*/
+.page {
+  margin-top: 20px;
+  padding: 1em;
+  transition: opacity 1s;
+  text-align: center;
+}
+.page *{
+
+  color: #1dced7c6;
+  background: inherit;
+  mix-blend-mode: lighten; /* or screen, depending on your goals */
+  font-family: losevka;
+}
+
+.page > p{
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+}
