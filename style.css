@@ -24,10 +24,11 @@ body {
   padding: 12px 24px;
   border-radius: 8px;
   font-weight: bold;
-  box-shadow: 0 0 20px rgba(125, 249, 240, 0.267);
+  box-shadow: 0 0 12px rgba(126, 246, 238, 0.267);
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
 }
+
 .menubutton:hover {
   background: radial-gradient(circle at center, #3B5369, #11121A);
   transform: scale(1.04);

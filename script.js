@@ -14,6 +14,7 @@ fetch('pages.json')
     });
 });
 
+
 /**
  * Collapses or unfolds an element of the given id
  * @param {string} id the id of the element to collapse
@@ -21,9 +22,11 @@ fetch('pages.json')
 function collapse(id) {
   var content = document.getElementById(id);
   if (content.style.maxHeight) {
+    content.style.overflow = "hidden"
     content.style.maxHeight = null;
   } else {
     content.style.maxHeight = content.scrollHeight + "px";
+    content.addEventListener("transitionend",function handler(){content.removeEventListener("transitionend",handler);content.style.overflow="visible"; })
   }
 }
 
