@@ -1,7 +1,7 @@
 /**
  * Entry pages logic
  */
-fetch('pages.json')
+fetch('Pages.json')
   .then(res => res.json())
   .then(files => {
     const nav = document.getElementById("entries")
@@ -9,7 +9,7 @@ fetch('pages.json')
       const btn = document.createElement('button');
       btn.classList = "menubutton"
       btn.textContent = file.replace('.html', '');
-      btn.onclick = () => loadPage(`pages/${file}`);
+      btn.onclick = () => loadPage(`Pages/${file}`);
       nav.appendChild(btn);
     });
 });
