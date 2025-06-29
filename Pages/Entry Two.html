@@ -1,3 +1,78 @@
-<div class="page">
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores reiciendis quia beatae nobis molestiae eum voluptatem nulla assumenda, harum, amet obcaecati minus dolorum quasi ullam voluptatibus deserunt animi repellendus unde!</p>
-</div>
+<article class="page">
+    <h1>Entry Two</h1>
+    <em>
+        This entry will discuss the approach taken for a working 
+        hit scan gun and working interactibles using the same 
+        essential systems.
+    </em>
+    <p>
+        As was seen in the previous entry, a system for interactibles and 
+        shooting was needed. These have been implemented using raycasts 
+        from the godot physics engine. The <a href="#fig1">function</a>, 
+        shown <a href="#fig1">below</a>, essentially just shoots a raycast 
+        at an angle relative to the players position, with a given range, 
+        detecting the given layer.
+    </p>
+    <figure id="fig1">
+        <div class="codecontainer">
+            <p>GDScript<button id="_shoot_ray_copy" class="codecopy" onclick="copy('_shoot_ray', '_shoot_ray_copy')">copy</button></p>
+            <hr>
+    <pre><code id="_shoot_ray">
+func _shoot_ray(angle : float, layers : int, range: float, insideFaces : bool ) -> Dictionary:
+    var space_state := get_world_3d().direct_space_state
+    var direction = position.direction_to(global_position+target_offset).normalized()
+    direction = direction.rotated(Vector3.UP, angle)
+    var to = position + direction * range
+    var parameters : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(
+        position,
+        to,
+        layers
+        )
+    parameters.collide_with_areas = true
+    parameters.hit_from_inside = insideFaces
+    var result : Dictionary = space_state.intersect_ray(parameters)
+    return result
+    </code></pre>
+        </div>
+        <figcaption>Figure 1: Raycaster function</figcaption>
+    </figure>
+    <p>
+        To pick out an example of where this is currently used, in 
+        the players interact method, shown <a href="#fig2">below</a>, a ray is shot on layer 1 and 4 
+        (the wall and interactible layers). Then it is checked if 
+        the ray hit an interactible, if not, that means it hit a wall 
+        first or no interactible is in range. If it then hit an 
+        interactible the interactibles InteractibleArea (an Area3d with 
+        an interact signal), emits its interact signal which the 
+        interactible itself will then pick up on, causing it to call its 
+        interact method, and emit its own interacted signal.
+    </p>
+    <figure id="fig2">
+        <div class="codecontainer">
+            <p>GDScript<button id="_interact_copy" class="codecopy" onclick="copy('_interact', '_interact_copy')">copy</button></p>
+            <hr>
+    <pre><code id="_interact">
+func _interact():
+	var hit := _shoot_ray(0,(1&lt;&lt;0) | (1&lt;&lt;3), interaction_range, true)
+	if hit.get("collider") is InteractibleArea:
+		var collider : InteractibleArea = hit.get("collider")
+		collider.emit_signal("interact")
+    </code></pre>
+        </div>
+        <figcaption>Figure 2: Example of _shoot_ray usage</figcaption>
+    </figure>
+
+    <p>
+        Currently nearly the exact same approach as shown <a href="#fig2">above</a> is 
+        taken to implement the hit scan bullets from the players attack, the only 
+        difference being more rays shot out, as the player can shoot more than one 
+        bullet at once, and with some random variety in the angle for spread, and 
+        of course different layers to hit enemies and walls only.
+    </p>
+    <footer>
+        <address>
+            Written by <a href="mailto:tinylittlegameman@gmail.com">tinylittlegameman@gmail.com</a><br>
+            Published <time datetime="2025-06-29">June 29, 2025</time>
+        </address>
+    </footer>
+</article>

@@ -74,14 +74,93 @@ video {
   transition: opacity 1s;
   text-align: center;
   align-content: center;
-}
-.page *{
   color: #1dced7c6;
   background: inherit;
   font-family: losevka;
 }
 
-.page > p{
+.page p{
     font-size: clamp(0.9rem, 1.2vw, 1.1rem);
     mix-blend-mode: screen;
+}
+
+.page a {
+  color: #24dae4c6;
+  background: inherit;
+  font-family: losevka;
+  text-decoration: underline; /* optional: make links stand out */
+}
+
+.page a:hover,
+.page a:focus {
+  color: #00f0ff;
+  text-decoration: none; /* or tweak based on preference */
+}
+.previous {
+  float: left;
+}
+
+.next {
+  float: right;
+}
+
+/**
+Code blocks
+*/
+
+.codecontainer {
+  position: relative;
+  display: table; /* shrink-wraps to content */
+  margin: 0 auto; /* centers the block */
+  background-color: #05050574; /* Dark background */
+  color: #f8f8f2; /* Light text */
+  text-align: left;
+  min-width: 60%;
+}
+
+.codecontainer p{
+  padding-left: 2em;
+}
+
+.codecontainer code{
+  padding-left: 1em;
+}
+
+.codecontainer code,
+.codecontainer pre {
+  display: block;        /* ensure it's treated as a block element */
+  margin: 0;
+  width: 100%;    /* keeps the code block as narrow as needed */
+  text-wrap-mode:wrap;
+  overflow-wrap: pre-wrap;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+
+
+.codecopy {
+  position: absolute;
+  right: 0.5em;
+  z-index: 2;
+  background: #2B3E50;
+  color: #AFCBFF;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.codecopy:hover{
+  background: radial-gradient(circle at center, #2B3E50, #1f2c39);
+  transform: scale(1.04);
+}
+
+.codecopy:active{
+  background: radial-gradient(circle at center, #1f2c39, #2B3E50);
+  transform: scale(0.96);
+}
+
+.codecopy.copied{
+  background: radial-gradient(circle at center, #1f2c3967, #2b3e505e);
+  transform: scale(1);
 }
