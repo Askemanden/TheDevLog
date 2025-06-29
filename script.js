@@ -31,7 +31,7 @@ function loadPage(url, index) {
     .then(html => {
       document.getElementById('content').innerHTML = html;
       const current = document.querySelector(".page");
-      if(index!=0){
+      if(index>0 && index !=-1){
         const btn = document.createElement('button');
         btn.classList = "menubutton previous"
         btn.textContent = "Previous Entry";
@@ -40,7 +40,7 @@ function loadPage(url, index) {
         };
         current.appendChild(btn);
       }
-      if(index != pages.length-1){
+      if(index < pages.length-1 && index !=-1){
         const btn = document.createElement('button');
         btn.classList = "menubutton next"
         btn.textContent = "Next Entry";
