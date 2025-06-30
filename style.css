@@ -6,6 +6,8 @@ html, body {
   margin: 0;
   overflow-x: hidden; /* stops horizontal overscroll */
   overscroll-behavior: none; /* disables scroll past boundaries */
+  will-change: scroll-position;
+  backface-visibility: hidden;
 }
 
 
@@ -77,6 +79,7 @@ video {
   color: #1dced7c6;
   background: inherit;
   font-family: losevka;
+  transform: translateZ(0);
 }
 
 .page p{
